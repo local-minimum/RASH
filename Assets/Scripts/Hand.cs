@@ -29,6 +29,17 @@ public class Hand : MonoBehaviour
     [SerializeField]
     float maxAtSqDistance = 20f;
 
+    [SerializeField]
+    float timeToScratch = 1.5f;
+
+    [SerializeField, Range(0,1)]
+    float allowScratchOnProgress = 0.9f;
+
+    float scratchT0;
+
+    float scratchProgress =>
+        Mathf.Clamp01((Time.timeSinceLevelLoad - scratchT0) / timeToScratch);
+
     Vector2 MouseForce
     {
         get
@@ -45,6 +56,9 @@ public class Hand : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    AnimationCurve panic;
+
     private void Update()
     {
         var rb = GetComponent<Rigidbody2D>();
@@ -54,9 +68,12 @@ public class Hand : MonoBehaviour
             rashGravity += rash.CalculateForce(ScratchCenter.position);
         }
 
-        rb.AddForce(rashGravity + MouseForce);
+        var scratch = scratchProgress;
+        var mouse = MouseForce;
 
-        if (Input.GetMouseButtonDown(0))
+        rb.AddForce(Vector2.Lerp(mouse, rashGravity + mouse, panic.Evaluate(scratch)));
+
+        if (scratch == 1.0f || Input.GetMouseButtonDown(0) && scratch > allowScratchOnProgress )
         {
             Scratch();
         }
@@ -92,6 +109,7 @@ public class Hand : MonoBehaviour
 
     void Scratch()
     {
+        scratchT0 = Time.timeSinceLevelLoad;
         foreach (var rash in OverlappingRashes) rash.Scratch();
     }
 }
