@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void ScratchRashEvent(Rash rash);
+
 public class Rash : MonoBehaviour
 {
-    public static List<Rash> Rashes = new List<Rash>();
+    public static event ScratchRashEvent OnScratch;
+
+    public static HashSet<Rash> Rashes = new HashSet<Rash>();
 
     [SerializeField, Range(0, 1)]
     float intensity;
@@ -40,8 +44,16 @@ public class Rash : MonoBehaviour
 
     private float phaseStart;
 
+    int scratches = 0;
+
     private void OnEnable()
     {
+        StartItch();
+    }
+    
+    public void StartItch()
+    {
+        scratches++;
         Rashes.Add(this);
         Phase = ItchPhase.ItchIn;
         SetItch(0f);
@@ -75,11 +87,20 @@ public class Rash : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.Lerp(noItchColor, fullItchColor, intensity);
     }
 
+    [SerializeField]
+    int maxScratches = 3;
+
     public void Scratch()
     {
-        if (Phase == ItchPhase.Itching || Phase == ItchPhase.ItchOut) {
-            Phase = ItchPhase.Itching;
-            intensity = 1f;
+        if (Phase == ItchPhase.Itching || Phase == ItchPhase.ItchOut)
+        {
+            scratches++;
+            if (scratches < maxScratches) {
+                Phase = ItchPhase.Itching;
+                intensity = 1f;
+            }
+        
+            OnScratch?.Invoke(this);
         }
     }
 
@@ -94,6 +115,7 @@ public class Rash : MonoBehaviour
                     rend.color,
                     inactiveItchColor,
                     0.25f); 
+            if (duration > 1.0f) gameObject.SetActive(false);
         }
         else if (Phase == ItchPhase.ItchIn)
         {

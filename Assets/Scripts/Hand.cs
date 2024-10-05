@@ -76,7 +76,7 @@ public class Hand : MonoBehaviour
         var scratch = scratchProgress;
         var mouse = MouseForce;
 
-        rb.AddForce(Vector2.Lerp(mouse, rashGravity + mouse, panic.Evaluate(scratch)));
+        rb.AddForce(Vector2.Lerp(mouse, rashGravity + mouse, panic.Evaluate(scratching ? 1f : scratch)));
 
         if (!scratching)
         {
@@ -97,6 +97,8 @@ public class Hand : MonoBehaviour
         var rash = collision.GetComponent<Rash>();
         if (rash != null)
         {
+            if (scratching) rash.Scratch();
+
             OverlappingRashes.Add(rash);
 
             var rb = GetComponent<Rigidbody2D>();
