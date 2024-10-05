@@ -28,12 +28,6 @@ public class RashSpawner : MonoBehaviour
     [SerializeField]
     float maxSpawnInterval = 2f;
 
-    [SerializeField, Range(0, 0.1f)]
-    float xMargin = 0.05f;
-
-    [SerializeField, Range(0, 0.1f)]
-    float yMargin = 0.02f;
-
     int downSample = 10;
 
     Vector2Int GetSpawnPixel()

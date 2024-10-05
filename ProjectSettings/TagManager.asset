@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Overlays
+    uniqueID: 2036831311
+    locked: 0
+  - name: Surface
+    uniqueID: 1849513503
+    locked: 0

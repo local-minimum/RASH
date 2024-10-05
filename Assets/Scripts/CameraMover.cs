@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CameraMover : MonoBehaviour
@@ -42,12 +43,18 @@ public class CameraMover : MonoBehaviour
 
     float initialZoom;
 
+    [SerializeField]
+    List<Transform> Edges = new List<Transform>();
+    List<Vector2> EdgeOffsets = new List<Vector2>();
+
     private void Start()
     {
         initialZoom = GetComponent<Camera>().orthographicSize;
 
         nextMove = startMovingAfter;
         nextZoom = zoomAfter;
+
+        EdgeOffsets.AddRange(Edges.Select(e => new Vector2(e.transform.localPosition.x, e.localPosition.y)));
     }
 
     void Update()
@@ -75,7 +82,15 @@ public class CameraMover : MonoBehaviour
             float zoomProgress = Mathf.Clamp01((Time.timeSinceLevelLoad - zoomStart) / zoomDuration);
 
             var cam = GetComponent<Camera>();
-            cam.orthographicSize = initialZoom - Mathf.Sin(zoomProgress * Mathf.PI) * maxZoom;
+            var zoom = Mathf.Sin(zoomProgress * Mathf.PI) * maxZoom;
+            cam.orthographicSize = initialZoom - zoom;
+            var factor = (initialZoom - zoom) / initialZoom;
+            for (int i = 0, l = Edges.Count; i < l; i++)
+            {
+                var edge = Edges[i];
+                var offset = EdgeOffsets[i];
+                edge.transform.localPosition = new Vector3(offset.x * factor, offset.y * factor, edge.transform.localPosition.z);
+            }
             zooming = zoomProgress < 1f;
         }
     }
