@@ -51,13 +51,15 @@ public class Hand : MonoBehaviour
         var rashGravity = Vector2.zero;
         foreach (var rash in Rash.Rashes)
         {
-            //if (OverlappingRashes.Contains(rash)) continue;
-
             rashGravity += rash.CalculateForce(ScratchCenter.position);
         }
 
-
         rb.AddForce(rashGravity + MouseForce);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Scratch();
+        }
     }
 
     HashSet<Rash> OverlappingRashes = new HashSet<Rash>();
@@ -86,5 +88,10 @@ public class Hand : MonoBehaviour
                 rb.drag = dragNoRash;
             } 
         }
+    }
+
+    void Scratch()
+    {
+        foreach (var rash in OverlappingRashes) rash.Scratch();
     }
 }

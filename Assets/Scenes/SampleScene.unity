@@ -464,7 +464,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.9811321, g: 0.9495662, b: 0.89320046, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -997,6 +997,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensity: 1
   attractionForce: 15
+  noItchColor: {r: 0.9245283, g: 0.89184886, b: 0.8678355, a: 0.5529412}
+  fullItchColor: {r: 0.8962264, g: 0.063412234, b: 0.063412234, a: 0.74509805}
+  inactiveItchColor: {r: 0.8773585, g: 0.8563465, b: 0.84011215, a: 0}
+  itchInDuration: 2
+  itchingDuration: 5
+  itchOutDuration: 1
   minDistance: 2
 --- !u!212 &1764200468
 SpriteRenderer:
