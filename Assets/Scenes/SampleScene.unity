@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 1098493630}
   - component: {fileID: 1098493629}
   - component: {fileID: 1098493633}
+  - component: {fileID: 1098493634}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -404,6 +405,9 @@ MonoBehaviour:
   ScratchCenter: {fileID: 1630995687}
   dragOverRash: 1
   dragNoRash: 0.8
+  minMouseForce: 0.1
+  maxMouseForce: 2
+  maxAtSqDistance: 5
 --- !u!212 &1098493631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -525,6 +529,20 @@ PolygonCollider2D:
       - {x: 0.48026252, y: 0.10593504}
       - {x: 0.4447348, y: 0.39450237}
   m_UseDelaunayMesh: 0
+--- !u!114 &1098493634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098493628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e6aacfa660d6843aa0b41df69f3712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noSpeedThreshold: 0.1
+  attack: 0.7
 --- !u!1 &1630995686
 GameObject:
   m_ObjectHideFlags: 0

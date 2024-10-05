@@ -19,18 +19,45 @@ public class Hand : MonoBehaviour
         rb.drag = dragNoRash;
     }
 
+
+    [SerializeField]
+    float minMouseForce = 1.0f;
+
+    [SerializeField]
+    float maxMouseForce = 100f;
+
+    [SerializeField]
+    float maxAtSqDistance = 20f;
+
+    Vector2 MouseForce
+    {
+        get
+        {
+            var mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouse.z = transform.position.z;
+
+            var delta = mouse - transform.position;
+
+            return delta.normalized * Mathf.Lerp(
+                minMouseForce,
+                maxMouseForce,
+                delta.sqrMagnitude / maxAtSqDistance);
+        }
+    }
+
     private void Update()
     {
         var rb = GetComponent<Rigidbody2D>();
-        var force = Vector2.zero;
+        var rashGravity = Vector2.zero;
         foreach (var rash in Rash.Rashes)
         {
             if (OverlappingRashes.Contains(rash)) continue;
 
-            force += rash.CalculateForce(ScratchCenter.position);
+            rashGravity += rash.CalculateForce(ScratchCenter.position);
         }
 
-        rb.AddForce(force);
+
+        rb.AddForce(rashGravity + MouseForce);
     }
 
     HashSet<Rash> OverlappingRashes = new HashSet<Rash>();
