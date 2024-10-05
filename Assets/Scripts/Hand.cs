@@ -19,7 +19,6 @@ public class Hand : MonoBehaviour
         rb.drag = dragNoRash;
     }
 
-
     [SerializeField]
     float minMouseForce = 1.0f;
 
@@ -117,6 +116,16 @@ public class Hand : MonoBehaviour
                 var rb = GetComponent<Rigidbody2D>();
                 rb.drag = dragNoRash;
             } 
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+        var rash = collision.GetComponent<Rash>();
+        if (rash != null)
+        {
+            OverlappingRashes.Add(rash);
         }
     }
 

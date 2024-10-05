@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ScratchRashEvent(Rash rash);
+public delegate void RashItchPhaseEvent(Rash rash, Rash.ItchPhase phase);
 
 public class Rash : MonoBehaviour
 {
+    public static event RashItchPhaseEvent OnItchPhase;
     public static event ScratchRashEvent OnScratch;
 
     public static HashSet<Rash> Rashes = new HashSet<Rash>();
@@ -34,15 +36,20 @@ public class Rash : MonoBehaviour
     [SerializeField]
     float itchOutDuration = 1;
 
-    private enum ItchPhase { Inactive, ItchIn, Itching, ItchOut  };
+    public enum ItchPhase { Inactive, ItchIn, Itching, ItchOut  };
     private ItchPhase _phase;
     private ItchPhase Phase
     {
         get => _phase;
         set
         {
+            bool newPhase = _phase != value;
             _phase = value;
             phaseStart = Time.timeSinceLevelLoad;
+            if (newPhase)
+            {
+                OnItchPhase?.Invoke(this, value);
+            }
         }
     }
 
@@ -98,6 +105,8 @@ public class Rash : MonoBehaviour
 
     public void Scratch()
     {
+        Debug.Log($"Considering scratching {name}");
+
         if (Phase == ItchPhase.Itching || Phase == ItchPhase.ItchOut)
         {
             scratches++;
