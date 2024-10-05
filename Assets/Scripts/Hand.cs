@@ -29,16 +29,21 @@ public class Hand : MonoBehaviour
     [SerializeField]
     float maxAtSqDistance = 20f;
 
+
+    bool scratching;
+
     [SerializeField]
-    float timeToScratch = 1.5f;
+    float scratchWaitTime = 1.5f;
+    [SerializeField]
+    float scratchingTime = 1.0f;
 
     [SerializeField, Range(0,1)]
     float allowScratchOnProgress = 0.9f;
 
-    float scratchT0;
+    float waitForScratchStart;
 
-    float scratchProgress =>
-        Mathf.Clamp01((Time.timeSinceLevelLoad - scratchT0) / timeToScratch);
+    float scratchProgress => 
+        Mathf.Clamp01((Time.timeSinceLevelLoad - waitForScratchStart) / (scratching ? scratchingTime : scratchWaitTime));
 
     Vector2 MouseForce
     {
@@ -73,9 +78,15 @@ public class Hand : MonoBehaviour
 
         rb.AddForce(Vector2.Lerp(mouse, rashGravity + mouse, panic.Evaluate(scratch)));
 
-        if (scratch == 1.0f || Input.GetMouseButtonDown(0) && scratch > allowScratchOnProgress )
+        if (!scratching)
         {
-            Scratch();
+            if (scratch == 1.0f || Input.GetMouseButtonDown(0) && scratch > allowScratchOnProgress)
+            {
+                Scratch();
+            }
+        } else if (scratch == 1.0f)
+        {
+            StopScratch();
         }
     }
 
@@ -109,7 +120,21 @@ public class Hand : MonoBehaviour
 
     void Scratch()
     {
-        scratchT0 = Time.timeSinceLevelLoad;
+        Debug.Log("Scratch");
+        scratching = true;
+        waitForScratchStart = Time.timeSinceLevelLoad;
+        
         foreach (var rash in OverlappingRashes) rash.Scratch();
+
+        GetComponent<Animator>().SetTrigger("Scratch");
+    }
+
+    void StopScratch()
+    {
+        Debug.Log("Stop Scratch");
+        scratching = false;
+        waitForScratchStart = Time.timeSinceLevelLoad;
+
+        GetComponent<Animator>().SetTrigger("No-Scratch");
     }
 }

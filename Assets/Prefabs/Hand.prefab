@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 625670404862176378}
   - component: {fileID: 5822509269574498014}
   - component: {fileID: 1452289881058284593}
-  - component: {fileID: 8828742589725338067}
   - component: {fileID: 8786613132848381700}
   m_Layer: 0
   m_Name: Hand
@@ -109,7 +108,8 @@ MonoBehaviour:
   minMouseForce: 0.1
   maxMouseForce: 2
   maxAtSqDistance: 5
-  timeToScratch: 3
+  scratchWaitTime: 1.5
+  scratchingTime: 1
   allowScratchOnProgress: 0.9
   panic:
     serializedVersion: 2
@@ -229,18 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noSpeedThreshold: 0.1
   attack: 0.7
---- !u!114 &8828742589725338067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539216939598320541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23f144cf17a0e148895857e93618f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &8786613132848381700
 Animator:
   serializedVersion: 5
