@@ -161,7 +161,7 @@ public class RashSpawner : MonoBehaviour
 
         rash.transform.position = pos;
         rash.gameObject.SetActive(true);
-        rash.StartItch();
+        rash.StartItch(Random.Range(0.8f, 2.5f));
 
         nextSpawn = Time.timeSinceLevelLoad + Random.Range(minSpawnInterval, maxSpawnInterval);
     }

@@ -13,8 +13,12 @@ public class Rash : MonoBehaviour
     [SerializeField, Range(0, 1)]
     float intensity;
 
+
+    float size = 1f;
+
     [SerializeField]
     float attractionForce = 20f;
+    float AttractionForce => attractionForce * size;
 
     [SerializeField]
     Color noItchColor;
@@ -51,8 +55,10 @@ public class Rash : MonoBehaviour
         StartItch();
     }
     
-    public void StartItch()
+    public void StartItch(float magnitude = 1f)
     {
+        size = magnitude;
+        transform.localScale = Vector3.one * size;
         scratches++;
         Rashes.Add(this);
         Phase = ItchPhase.ItchIn;
@@ -76,7 +82,7 @@ public class Rash : MonoBehaviour
     {
         var direction = transform.position - otherPosition;
         var distance = Mathf.Max(minDistance, Vector2.SqrMagnitude(direction));
-        return direction.normalized * attractionForce * intensity / distance;
+        return direction.normalized * AttractionForce * intensity / distance;
     }
 
     float PhaseDuration => Time.timeSinceLevelLoad - phaseStart;

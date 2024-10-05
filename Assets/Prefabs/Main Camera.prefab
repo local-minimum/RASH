@@ -273,6 +273,8 @@ GameObject:
   - component: {fileID: 4678399945822629067}
   - component: {fileID: 777023904127470731}
   - component: {fileID: 8024257339921990892}
+  - component: {fileID: 8147601676097303779}
+  - component: {fileID: 8522954696229961222}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -419,7 +421,58 @@ MonoBehaviour:
   maxSpawnInterval: 3
   xMargin: 0.05
   yMargin: 0.02
+  spawnNoise: 40
   maxRashes: 15
+--- !u!114 &8147601676097303779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945272960607312059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d4a659c8a6e6d43baa6d43ac291bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMovingAfter: 10
+  minMoveTime: 1
+  maxMoveTime: 4
+  minMoveSpeed: 1
+  maxMoveSpeed: 3
+  zoomAfter: 20
+  maxZoom: 1.5
+  minZoomDuration: 4
+  maxZoomDuration: 8
+  minZoomPause: 3
+  maxZoomPause: 10
+--- !u!50 &8522954696229961222
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945272960607312059}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &5030349290652248729
 GameObject:
   m_ObjectHideFlags: 0
