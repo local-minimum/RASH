@@ -51,7 +51,7 @@ public class Hand : MonoBehaviour
         var rashGravity = Vector2.zero;
         foreach (var rash in Rash.Rashes)
         {
-            if (OverlappingRashes.Contains(rash)) continue;
+            //if (OverlappingRashes.Contains(rash)) continue;
 
             rashGravity += rash.CalculateForce(ScratchCenter.position);
         }

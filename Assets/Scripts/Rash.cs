@@ -27,10 +27,13 @@ public class Rash : MonoBehaviour
         Rashes.Remove(this);
     }
 
+    [SerializeField]
+    float minDistance = 0.5f;
+
     public Vector2 CalculateForce(Vector3 otherPosition)
     {
         var direction = transform.position - otherPosition;
-        var distance = Vector2.SqrMagnitude(direction);
+        var distance = Mathf.Max(minDistance, Vector2.SqrMagnitude(direction));
         return direction.normalized * attractionForce * intensity / distance;
     }
 
