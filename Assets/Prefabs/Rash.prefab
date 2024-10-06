@@ -102,7 +102,7 @@ MonoBehaviour:
   sizeScale: 1
   attractionForce: 15
   noItchColor: {r: 0.9245283, g: 0.89184886, b: 0.8678355, a: 0}
-  fullItchColor: {r: 0.965, g: 0.06742357, b: 0.06742357, a: 0.48235294}
+  fullItchColor: {r: 0.7264151, g: 0, b: 0, a: 0.7529412}
   inactiveItchColor: {r: 0.8773585, g: 0.8563465, b: 0.84011215, a: 0}
   itchInDuration: 2
   itchingDuration: 5

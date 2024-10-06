@@ -110,7 +110,7 @@ RectTransform:
   m_Father: {fileID: 6789613842818785504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8, y: 0.85}
-  m_AnchorMax: {x: 0.99, y: 0.995}
+  m_AnchorMax: {x: 0.98, y: 0.995}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -144,8 +144,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93a44853ae8b26f418258f6b8ae29c24, type: 2}
+  m_sharedMaterial: {fileID: -3033538372082636153, guid: 93a44853ae8b26f418258f6b8ae29c24, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.3
+  m_fontSize: 76.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -278,7 +278,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 7
+  m_PlaneDistance: 3
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -636,15 +636,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: GAME OVER
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93a44853ae8b26f418258f6b8ae29c24, type: 2}
+  m_sharedMaterial: {fileID: -3033538372082636153, guid: 93a44853ae8b26f418258f6b8ae29c24, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3306822255
-  m_fontColor: {r: 0.4339623, g: 0.10030261, b: 0.10030261, a: 0.77254903}
+    rgba: 4128905839
+  m_fontColor: {r: 0.4339623, g: 0.10030261, b: 0.10030261, a: 0.9647059}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110.8
+  m_fontSize: 201.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
