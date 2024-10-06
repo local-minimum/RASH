@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.1251, y: 0.7698, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1849513503
   m_SortingLayer: 2
   m_SortingOrder: 100
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41f1e92c17ea131448d0be7223797e0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensity: 1
   attractionForce: 15
-  noItchColor: {r: 0.9245283, g: 0.89184886, b: 0.8678355, a: 0.5529412}
-  fullItchColor: {r: 0.8962264, g: 0.063412234, b: 0.063412234, a: 0.74509805}
+  noItchColor: {r: 0.9245283, g: 0.89184886, b: 0.8678355, a: 0.20784314}
+  fullItchColor: {r: 0.965, g: 0.06742357, b: 0.06742357, a: 0.48235294}
   inactiveItchColor: {r: 0.8773585, g: 0.8563465, b: 0.84011215, a: 0}
   itchInDuration: 2
   itchingDuration: 5
@@ -142,4 +142,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
