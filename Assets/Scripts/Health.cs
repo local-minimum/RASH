@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public delegate void DeathEvent(int score);
@@ -49,7 +51,20 @@ public class Health : MonoBehaviour
         {
             alive = false;
             GameOver.SetActive(true);
-            OnDeath?.Invoke(Mathf.FloorToInt(Time.timeSinceLevelLoad));
+
+            var score = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+            PlayerPrefs.SetInt("Highscore", Mathf.Max(score, PlayerPrefs.GetInt("Highscore", 0)));
+            OnDeath?.Invoke(score);
+            StartCoroutine(LoadMenu());
         }
+    }
+
+    [SerializeField]
+    float delayMenuWith = 2f;
+
+    IEnumerator<WaitForSeconds> LoadMenu()
+    {
+        yield return new WaitForSeconds(delayMenuWith);
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -345,6 +345,7 @@ MonoBehaviour:
   HealthImg: {fileID: 3892365189200916452}
   maxScratches: 20
   GameOver: {fileID: 4569525115203690191}
+  delayMenuWith: 3
 --- !u!1 &861213501020098352
 GameObject:
   m_ObjectHideFlags: 0
