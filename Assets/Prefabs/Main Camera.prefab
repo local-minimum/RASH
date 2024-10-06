@@ -449,6 +449,7 @@ MonoBehaviour:
   - {fileID: 6315086573725181094}
   - {fileID: 3627436996151030977}
   - {fileID: 8909894945728407859}
+  MaxDeviation: {x: 30, y: 20}
 --- !u!50 &8522954696229961222
 Rigidbody2D:
   serializedVersion: 4

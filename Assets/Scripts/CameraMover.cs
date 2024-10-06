@@ -46,6 +46,9 @@ public class CameraMover : MonoBehaviour
     List<Transform> Edges = new List<Transform>();
     List<Vector2> EdgeOffsets = new List<Vector2>();
 
+    [SerializeField]
+    Vector2 MaxDeviation = new Vector2(30, 20);
+
     bool alive;
 
     private void OnEnable()
@@ -113,5 +116,13 @@ public class CameraMover : MonoBehaviour
             }
             zooming = zoomProgress < 1f;
         }
+    }
+
+    private void LateUpdate()
+    {
+        var pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x,-MaxDeviation.x, MaxDeviation.x);
+        pos.y = Mathf.Clamp(pos.y,-MaxDeviation.y, MaxDeviation.y);
+        transform.position = pos;
     }
 }
