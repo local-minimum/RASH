@@ -153,4 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TravelColor: {r: 1, g: 1, b: 1, a: 0.46666667}
   SurfaceColor: {r: 1, g: 1, b: 1, a: 0.7882353}
+  travelDuration: 1
   abortForRashProb: 0.3
+  orthoMagnitude: 0.2
+  orthoFrequency: 4

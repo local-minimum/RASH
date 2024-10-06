@@ -290,10 +290,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3892365189200916452, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9098039
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892365189200916452, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892365189200916452, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892365189200916452, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6355182714029110461, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6355182714029110461, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6789613842818785504, guid: 64c5471e5df97a64d9c003b94895626d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -27,6 +27,7 @@ public class Morg : MonoBehaviour
         }
     }
 
+    [SerializeField]
     float travelDuration = 0.5f;
 
     float currentTravelDuration;
@@ -89,6 +90,12 @@ public class Morg : MonoBehaviour
             transform.rotation = Quaternion.Euler(0,0,Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);   
     }
 
+    [SerializeField]
+    float orthoMagnitude = 0.4f;
+
+    [SerializeField]
+    float orthoFrequency = 3;
+
     private void Update()
     {
         var rend = GetComponentInChildren<SpriteRenderer>();
@@ -102,6 +109,12 @@ public class Morg : MonoBehaviour
 
         var travelProgress = Mathf.Clamp01((Time.timeSinceLevelLoad - travelStartTime) / currentTravelDuration);
         transform.position = Vector3.Lerp(travelStart, travelEnd, travelProgress);
+
+        var delta = travelEnd - travelStart;
+        var distance = delta.magnitude;
+        var travelled = distance * travelProgress;
+        var ortho = new Vector3(delta.y, -delta.x, 0).normalized * Mathf.Sin(travelled / orthoFrequency) * orthoMagnitude;
+        transform.position += ortho;
 
         if (travelProgress == 1)
         {
