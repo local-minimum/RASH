@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -105,9 +104,9 @@ public class Rash : MonoBehaviour
 
     public void Scratch()
     {
-        Debug.Log($"Considering scratching {name}");
+        Debug.Log($"Considering scratching {name} {Phase}");
 
-        if (Phase == ItchPhase.Itching || Phase == ItchPhase.ItchOut)
+        if (Phase == ItchPhase.Itching || Phase == ItchPhase.ItchOut || Phase == ItchPhase.ItchIn)
         {
             scratches++;
             if (scratches < maxScratches) {

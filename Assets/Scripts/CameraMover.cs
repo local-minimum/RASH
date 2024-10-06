@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -47,6 +46,25 @@ public class CameraMover : MonoBehaviour
     List<Transform> Edges = new List<Transform>();
     List<Vector2> EdgeOffsets = new List<Vector2>();
 
+    bool alive;
+
+    private void OnEnable()
+    {
+        alive = true;
+        Health.OnDeath += Health_OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        Health.OnDeath -= Health_OnDeath;
+    }
+
+    private void Health_OnDeath(int score)
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        alive = false;
+    }
+
     private void Start()
     {
         initialZoom = GetComponent<Camera>().orthographicSize;
@@ -59,6 +77,8 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
+        if (!alive) return;
+
         if (Time.timeSinceLevelLoad > nextMove)
         {
             nextMove = Time.timeSinceLevelLoad + Random.Range(minMoveTime, maxMoveTime);

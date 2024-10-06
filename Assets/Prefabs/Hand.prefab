@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5822509269574498014}
   - component: {fileID: 1452289881058284593}
   - component: {fileID: 8786613132848381700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4207117954753555114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ScratchCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4421712387700661103}
   - component: {fileID: 7212643714264758924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,23 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public delegate void DeathEvent(int score);
+
 public class Health : MonoBehaviour
 {
+    public static event DeathEvent OnDeath;
+
     [SerializeField]
     Image HealthImg;
 
     [SerializeField]
     int maxScratches = 20;
 
-    int scratches;
+    [SerializeField]
+    GameObject GameOver;
 
+    int scratches;
+    bool alive;
     float Fill => (float) scratches / maxScratches;
 
     void Start()
     {
+        alive = true;
         HealthImg.fillAmount = Fill; 
+        GameOver.SetActive(false);
     }
 
     private void OnEnable()
@@ -32,8 +39,17 @@ public class Health : MonoBehaviour
 
     private void Rash_OnScratch(Rash rash)
     {
+        if (!alive) return;
+
         scratches++;
 
-        HealthImg.fillAmount = Fill; 
+        HealthImg.fillAmount = Fill;
+        
+        if (scratches >= maxScratches)
+        {
+            alive = false;
+            GameOver.SetActive(true);
+            OnDeath?.Invoke(Mathf.FloorToInt(Time.timeSinceLevelLoad));
+        }
     }
 }

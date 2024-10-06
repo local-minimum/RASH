@@ -15,8 +15,52 @@ public class Hand : MonoBehaviour
 
     private void OnEnable()
     {
+        alive = true;
+
         var rb = GetComponent<Rigidbody2D>();
         rb.drag = dragNoRash;
+
+        Rash.OnItchPhase += Rash_OnItchPhase;
+        Health.OnDeath += Health_OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        Rash.OnItchPhase -= Rash_OnItchPhase;
+        Health.OnDeath -= Health_OnDeath;
+    }
+
+    bool alive;
+
+    private void Health_OnDeath(int score)
+    {
+        alive = false;
+    }
+
+    private void Rash_OnItchPhase(Rash rash, Rash.ItchPhase phase)
+    {
+        if (phase == Rash.ItchPhase.ItchIn)
+        {
+            var collider = rash.GetComponentInChildren<CircleCollider2D>();
+            var results = new List<Collider2D>() { GetComponentInChildren<Collider2D>() };
+            var n = collider.OverlapCollider(new ContactFilter2D()
+            {
+                useTriggers = true,
+                useLayerMask = true,
+                layerMask = LayerMask.NameToLayer("Hand"),
+                useDepth = false,
+
+            },
+                results);
+            if (n > 0)
+            {
+                Debug.Log(results[0] == GetComponentInChildren<Collider2D>());
+                OverlappingRashes.Add(rash);
+            } else
+            {
+                Debug.LogWarning("Not over spawn");
+            }
+        }
     }
 
     [SerializeField]
@@ -36,12 +80,12 @@ public class Hand : MonoBehaviour
     [SerializeField]
     float scratchingTime = 1.0f;
 
-    [SerializeField, Range(0,1)]
+    [SerializeField, Range(0, 1)]
     float allowScratchOnProgress = 0.9f;
 
     float waitForScratchStart;
 
-    float scratchProgress => 
+    float scratchProgress =>
         Mathf.Clamp01((Time.timeSinceLevelLoad - waitForScratchStart) / (scratching ? scratchingTime : scratchWaitTime));
 
     Vector2 MouseForce
@@ -75,11 +119,11 @@ public class Hand : MonoBehaviour
         var scratch = scratchProgress;
         var mouse = MouseForce;
 
-        rb.AddForce(Vector2.Lerp(mouse, rashGravity + mouse, panic.Evaluate(scratching ? 1f : scratch)));
+        rb.AddForce(Vector2.Lerp(mouse, rashGravity + mouse, panic.Evaluate(scratching || !alive ? 1f : scratch)));
 
         if (!scratching)
         {
-            if (scratch == 1.0f || Input.GetMouseButtonDown(0) && scratch > allowScratchOnProgress)
+            if (!alive || scratch == 1.0f || Input.GetMouseButtonDown(0) && scratch > allowScratchOnProgress)
             {
                 Scratch();
             }

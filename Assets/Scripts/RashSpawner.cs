@@ -10,7 +10,6 @@ public class RashSpawner : MonoBehaviour
 
     List<Rash> Rashes = new List<Rash>();
 
-
     Rash GetRash()
     {
         var unused = Rashes.FirstOrDefault(r => !r.gameObject.activeSelf);
@@ -138,14 +137,17 @@ public class RashSpawner : MonoBehaviour
     [SerializeField]
     int spawnNoise = 40;
 
+    bool alive = true;
+
     void Spawn()
     {
         var rash = GetRash();
 
-        var coords = Input.mousePosition + new Vector3(
+        var coords = alive ? Input.mousePosition + new Vector3(
             Random.Range(-Screen.width / spawnNoise, Screen.width / spawnNoise),
             Random.Range(-Screen.height / spawnNoise * 2, Screen.height / spawnNoise * 2)
-            );
+            ) : new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height));
+
         coords.x = Mathf.Clamp(coords.x, 0, Screen.width);
         coords.y = Mathf.Clamp(coords.y, 0, Screen.height);
 
@@ -175,12 +177,25 @@ public class RashSpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        alive = true;
         Rash.OnScratch += Rash_OnScratch;
+        Health.OnDeath += Health_OnDeath;
     }
 
     private void OnDisable()
     {
         Rash.OnScratch -= Rash_OnScratch;
+        Health.OnDeath -= Health_OnDeath;
+    }
+
+    private void Health_OnDeath(int score)
+    {
+        maxRashes += 10;
+        maxRashes *= 3;
+        minSpawnInterval *= 0.25f;
+        maxSpawnInterval *= 0.3f;
+        alive = false;
+        Spawn();
     }
 
     private void Rash_OnScratch(Rash rash)
