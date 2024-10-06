@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_MogrParticleCorners
-  m_Shader: {fileID: -6465566751694194690, guid: 7c99740577590be419b592c650fb494e, type: 3}
+  m_Name: Mat_MorgParticleCorners
+  m_Shader: {fileID: -6465566751694194690, guid: 51dbb21fb16d7f3478e1b651814a2385, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -91,7 +91,7 @@ Material:
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _Softness: 0.2
+    - _Softness: 0.14
     - _SrcBlend: 1
     - _ZWrite: 1
     m_Colors:

@@ -91,7 +91,7 @@ Material:
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
-    - _Softness: 0.2
+    - _Softness: 0.171
     - _SrcBlend: 1
     - _ZWrite: 1
     m_Colors:
