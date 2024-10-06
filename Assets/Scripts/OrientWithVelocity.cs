@@ -10,6 +10,9 @@ public class OrientWithVelocity : MonoBehaviour
     [SerializeField]
     float attack = 0.5f;
 
+    [SerializeField, Range(0,1)]
+    float amount = 0.2f;
+
     void Update()
     {
         var rb = GetComponent<Rigidbody2D>();
@@ -20,7 +23,7 @@ public class OrientWithVelocity : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(
             transform.rotation, 
-            Quaternion.Euler(0,0,a),
+            Quaternion.Euler(0,0,a * Mathf.Rad2Deg*amount),
             attack);
     }
 }

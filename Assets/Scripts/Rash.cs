@@ -13,9 +13,11 @@ public class Rash : MonoBehaviour
 
     [SerializeField, Range(0, 1)]
     float intensity;
-
+    [SerializeField]
+    float sizeScale = 1.0f;
 
     float size = 1f;
+    public float Size => size * sizeScale;
 
     [SerializeField]
     float attractionForce = 20f;
@@ -56,11 +58,6 @@ public class Rash : MonoBehaviour
 
     int scratches = 0;
 
-    private void OnEnable()
-    {
-        StartItch();
-    }
-    
     public void StartItch(float magnitude = 1f)
     {
         size = magnitude;
