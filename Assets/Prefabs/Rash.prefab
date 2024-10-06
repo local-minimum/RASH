@@ -107,6 +107,9 @@ MonoBehaviour:
   itchInDuration: 2
   itchingDuration: 5
   itchOutDuration: 1
+  sprites:
+  - {fileID: 21300000, guid: 41f1e92c17ea131448d0be7223797e0c, type: 3}
+  - {fileID: 21300000, guid: 103c22d90ae7c1e478abf5c520c53dbd, type: 3}
   minDistance: 2
   maxScratches: 3
 --- !u!58 &1333348080855282560

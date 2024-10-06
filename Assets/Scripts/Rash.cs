@@ -37,6 +37,9 @@ public class Rash : MonoBehaviour
     [SerializeField]
     float itchOutDuration = 1;
 
+    [SerializeField]
+    Sprite[] sprites;
+
     public enum ItchPhase { Inactive, ItchIn, Itching, ItchOut  };
     private ItchPhase _phase;
     private ItchPhase Phase
@@ -60,8 +63,10 @@ public class Rash : MonoBehaviour
 
     public void StartItch(float magnitude = 1f)
     {
+        GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
         size = magnitude;
         transform.localScale = Vector3.one * size;
+        transform.rotation = Quaternion.Euler(0, 0, Random.value * 360f);
         scratches++;
         Rashes.Add(this);
         Phase = ItchPhase.ItchIn;

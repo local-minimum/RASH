@@ -53,8 +53,8 @@ MonoBehaviour:
   ScratchCenter: {fileID: 4207117954753555114}
   dragOverRash: 3
   dragNoRash: 0.8
-  minMouseForce: 0.1
-  maxMouseForce: 3
+  minMouseForce: 0.5
+  maxMouseForce: 4
   maxAtSqDistance: 5
   scratchWaitTime: 1.5
   scratchingTime: 1
@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noSpeedThreshold: 0.1
   attack: 0.7
+  amount: 0.2
 --- !u!95 &8786613132848381700
 Animator:
   serializedVersion: 5
