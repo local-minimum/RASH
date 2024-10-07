@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -132,6 +128,15 @@ public class MorgInput : MonoBehaviour
             tendrilShapeL1.arc = 20f + (CurrentVelocity * 20f);
             tendrilShapeL2.arc = 20f + (CurrentVelocity * 20f);
             tendrilShapeL3.arc = 20f + (CurrentVelocity * 20f);
+        }
+    }
+    
+    public void ApplyColor(Color color)
+    {
+        foreach (ParticleSystem ps in ParticleSystems)
+        {
+            var main = ps.main;
+            main.startColor = color;
         }
     }
 }
