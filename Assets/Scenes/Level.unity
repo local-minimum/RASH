@@ -451,6 +451,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7193641400123764373, guid: 4043c16518437cd4c997341c17b407bc, type: 3}
+      propertyPath: ScratchSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a29c0abf3471a146a6884ea53063f4e, type: 3}
+    - target: {fileID: 7193641400123764373, guid: 4043c16518437cd4c997341c17b407bc, type: 3}
+      propertyPath: SighSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193641400123764373, guid: 4043c16518437cd4c997341c17b407bc, type: 3}
+      propertyPath: SighSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e4953c703fda34e4bbc4c148d2a6a1d7, type: 3}
+    - target: {fileID: 7193641400123764373, guid: 4043c16518437cd4c997341c17b407bc, type: 3}
+      propertyPath: SighSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f935b281b19cdf64882b4262d82c0f72, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

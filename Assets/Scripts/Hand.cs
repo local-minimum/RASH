@@ -5,6 +5,11 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     [SerializeField]
+    AudioClip ScratchSound;
+    [SerializeField]
+    AudioClip[] SighSounds;
+
+    [SerializeField]
     Transform ScratchCenter;
 
     [SerializeField]
@@ -182,6 +187,7 @@ public class Hand : MonoBehaviour
         foreach (var rash in OverlappingRashes) rash.Scratch();
 
         GetComponent<Animator>().SetTrigger("Scratch");
+        GetComponent<AudioSource>().PlayOneShot(ScratchSound);
     }
 
     void StopScratch()
@@ -191,5 +197,9 @@ public class Hand : MonoBehaviour
         waitForScratchStart = Time.timeSinceLevelLoad;
 
         GetComponent<Animator>().SetTrigger("No-Scratch");
+        if (alive)
+        {
+            GetComponent<AudioSource>().PlayOneShot(SighSounds[Random.Range(0, SighSounds.Length)]);
+        }
     }
 }
