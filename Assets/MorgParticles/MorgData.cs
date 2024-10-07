@@ -47,9 +47,28 @@ public class MorgInput : MonoBehaviour
 
     Vector2 CurrentPos;
     Vector2 LastPos;
-    // Start is called before the first frame update
+
+    List<ParticleSystem> ParticleSystems;
+
     void Start()
     {
+        ParticleSystems = new List<ParticleSystem>()
+        {
+            MorgBody,
+            MorgHead,
+            MorgTail,
+            MorgTendrilH1,
+            MorgTendrilH2,
+            MorgTendrilH3,
+            MorgTendrilU1,
+            MorgTendrilU2,
+            MorgTendrilU3,
+            MorgTendrilL1,
+            MorgTendrilL2,
+            MorgTendrilL3,
+
+        };
+
         CurrentPos = transform.position;
         tailShape = MorgTail.shape;
         tendrilShapeH1 = MorgTendrilH1.shape;
@@ -61,6 +80,14 @@ public class MorgInput : MonoBehaviour
         tendrilShapeU1 = MorgTendrilU1.shape;
         tendrilShapeU2 = MorgTendrilU2.shape;
         tendrilShapeU3 = MorgTendrilU3.shape;
+
+        var seed = (uint) Mathf.FloorToInt(transform.position.magnitude);
+        foreach (ParticleSystem ps in ParticleSystems)
+        {
+            ps.Stop();
+            ps.randomSeed = seed;
+            ps.Play();
+        }
     }
 
     // Update is called once per frame
@@ -105,19 +132,6 @@ public class MorgInput : MonoBehaviour
             tendrilShapeL1.arc = 20f + (CurrentVelocity * 20f);
             tendrilShapeL2.arc = 20f + (CurrentVelocity * 20f);
             tendrilShapeL3.arc = 20f + (CurrentVelocity * 20f);
-
-            MorgBody.randomSeed = uint.Parse(transform.position.ToString());
-            MorgHead.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTail.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilH1.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilH2.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilH3.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilU1.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilU2.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilU3.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilL1.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilL2.randomSeed = uint.Parse(transform.position.ToString());
-            MorgTendrilL3.randomSeed = uint.Parse(transform.position.ToString());
         }
     }
 }

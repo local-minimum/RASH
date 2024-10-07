@@ -99,7 +99,7 @@ public class Morg : MonoBehaviour
     private void Update()
     {
         var rend = GetComponentInChildren<SpriteRenderer>();
-        rend.color = Color.Lerp(rend.color, traveling ? TravelColor : SurfaceColor, 0.5f);
+        //rend.color = Color.Lerp(rend.color, traveling ? TravelColor : SurfaceColor, 0.5f);
 
         if (Time.timeSinceLevelLoad > nextRandomTravel)
         {
