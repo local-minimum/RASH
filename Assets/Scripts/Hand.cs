@@ -79,6 +79,7 @@ public class Hand : MonoBehaviour
 
 
     bool scratching;
+    bool prescratching;
 
     [SerializeField]
     float scratchWaitTime = 1.5f;
@@ -128,7 +129,12 @@ public class Hand : MonoBehaviour
 
         if (!scratching)
         {
-            if (!alive || scratch == 1.0f || Input.GetMouseButtonDown(0) && scratch > allowScratchOnProgress)
+            if (scratch > allowScratchOnProgress && !prescratching)
+            {
+                prescratching = true;
+                GetComponent<Animator>().SetTrigger("Pre-Scratch");
+            }
+            if (!alive || scratch == 1.0f || Input.GetMouseButtonDown(0) && prescratching)
             {
                 Scratch();
             }
@@ -182,6 +188,7 @@ public class Hand : MonoBehaviour
     {
         Debug.Log("Scratch");
         scratching = true;
+        prescratching = false;
         waitForScratchStart = Time.timeSinceLevelLoad;
         
         foreach (var rash in OverlappingRashes) rash.Scratch();

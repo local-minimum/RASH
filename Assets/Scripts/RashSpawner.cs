@@ -139,6 +139,11 @@ public class RashSpawner : MonoBehaviour
 
     bool alive = true;
 
+    [SerializeField]
+    float makeHarderEach = 45f;
+
+    float nextHarder;
+
     void Spawn()
     {
         var rash = GetRash();
@@ -169,6 +174,14 @@ public class RashSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeSinceLevelLoad > nextHarder)
+        {
+            nextHarder += makeHarderEach;
+            minSpawnInterval *= 0.95f;
+            maxSpawnInterval *= 0.96f;
+            maxRashes += 2;
+        }
+
         if (Time.timeSinceLevelLoad > nextSpawn && ActiveRashes < maxRashes )
         {
             Spawn();
@@ -178,6 +191,7 @@ public class RashSpawner : MonoBehaviour
     private void OnEnable()
     {
         alive = true;
+        nextHarder = makeHarderEach;
         Rash.OnScratch += Rash_OnScratch;
         Health.OnDeath += Health_OnDeath;
     }
