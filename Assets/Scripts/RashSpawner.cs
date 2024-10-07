@@ -165,12 +165,17 @@ public class RashSpawner : MonoBehaviour
         rash.StartItch(Random.Range(0.8f, 1.5f));
 
         nextSpawn = Time.timeSinceLevelLoad + Random.Range(minSpawnInterval, maxSpawnInterval);
+
+        GetComponent<AudioSource>().PlayOneShot(morgSound, 0.7f);
     }
 
     int ActiveRashes => Rashes.Where(r => r.gameObject.activeSelf).Count();
 
     [SerializeField]
     int maxRashes = 10;
+
+    [SerializeField]
+    AudioClip morgSound;
 
     private void Update()
     {

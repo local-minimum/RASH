@@ -421,7 +421,9 @@ MonoBehaviour:
   minSpawnInterval: 0.3
   maxSpawnInterval: 3
   spawnNoise: 40
+  makeHarderEach: 45
   maxRashes: 15
+  morgSound: {fileID: 8300000, guid: 50465b0d65d5f6f4c93c2867eb23e42d, type: 3}
 --- !u!114 &8147601676097303779
 MonoBehaviour:
   m_ObjectHideFlags: 0
