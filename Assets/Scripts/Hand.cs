@@ -75,7 +75,7 @@ public class Hand : MonoBehaviour
     float maxMouseForce = 100f;
 
     [SerializeField]
-    float maxAtSqDistance = 20f;
+    float maxAtDistance = 5f;
 
 
     bool scratching;
@@ -105,7 +105,7 @@ public class Hand : MonoBehaviour
             return delta.normalized * Mathf.Lerp(
                 minMouseForce,
                 maxMouseForce,
-                delta.sqrMagnitude / maxAtSqDistance);
+                delta.magnitude / maxAtDistance);
         }
     }
 

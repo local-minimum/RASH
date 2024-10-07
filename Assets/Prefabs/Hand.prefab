@@ -59,8 +59,8 @@ MonoBehaviour:
   dragOverRash: 3
   dragNoRash: 0.8
   minMouseForce: 0.5
-  maxMouseForce: 4
-  maxAtSqDistance: 5
+  maxMouseForce: 8
+  maxAtDistance: 5
   scratchWaitTime: 1.5
   scratchingTime: 1
   allowScratchOnProgress: 0.9
