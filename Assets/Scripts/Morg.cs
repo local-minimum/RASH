@@ -78,7 +78,7 @@ public class Morg : MonoBehaviour
 
     bool targetIsRash;
 
-    void SetupTravel(Vector3 end, float nextDelay)
+    public void SetupTravel(Vector3 end, float nextDelay)
     {
             travelStart = transform.position;
             travelEnd = end;
@@ -88,6 +88,12 @@ public class Morg : MonoBehaviour
             currentTravelDuration = travelDuration * Mathf.Clamp(direction.magnitude / 5, 0.5f, 2f);
             nextRandomTravel = travelStartTime + currentTravelDuration + nextDelay;
             transform.rotation = Quaternion.Euler(0,0,Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);   
+    }
+
+    public void SetupTravel()
+    {
+        SetupTravel(RandomTravelTarget, Random.Range(0, 2f));
+        targetIsRash = false;
     }
 
     [SerializeField]
@@ -104,8 +110,7 @@ public class Morg : MonoBehaviour
 
         if (Time.timeSinceLevelLoad > nextRandomTravel)
         {
-            SetupTravel(RandomTravelTarget, Random.Range(0, 2f));
-            targetIsRash = false;
+            SetupTravel();
         }
 
         var travelProgress = Mathf.Clamp01((Time.timeSinceLevelLoad - travelStartTime) / currentTravelDuration);
@@ -123,6 +128,6 @@ public class Morg : MonoBehaviour
             {
                 traveling = false;
             }
+        }
     }
-}
 }
